@@ -4,7 +4,7 @@
 #
 Name     : R-pdfCluster
 Version  : 1.0.2
-Release  : 6
+Release  : 7
 URL      : https://cran.r-project.org/src/contrib/pdfCluster_1.0-2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pdfCluster_1.0-2.tar.gz
 Summary  : Cluster analysis via nonparametric density estimation
