@@ -4,17 +4,16 @@
 #
 Name     : R-pdfCluster
 Version  : 1.0.3
-Release  : 15
+Release  : 16
 URL      : https://cran.r-project.org/src/contrib/pdfCluster_1.0-3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pdfCluster_1.0-3.tar.gz
 Summary  : Cluster Analysis via Nonparametric Density Estimation
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-pdfCluster-lib = %{version}-%{release}
-Requires: R-geometry
-Requires: R-sm
-Requires: R-spdep
+Requires: R-magic
 BuildRequires : R-geometry
+BuildRequires : R-magic
 BuildRequires : R-sm
 BuildRequires : R-spdep
 BuildRequires : buildreq-R
@@ -42,10 +41,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543990236
+export SOURCE_DATE_EPOCH=1552879284
 
 %install
-export SOURCE_DATE_EPOCH=1543990236
+export SOURCE_DATE_EPOCH=1552879284
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -81,8 +80,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library pdfCluster|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  pdfCluster || :
 
 
 %files
@@ -111,7 +109,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/pdfCluster/help/pdfCluster.rdx
 /usr/lib64/R/library/pdfCluster/html/00Index.html
 /usr/lib64/R/library/pdfCluster/html/R.css
-/usr/lib64/R/library/pdfCluster/libs/symbols.rds
 
 %files lib
 %defattr(-,root,root,-)
