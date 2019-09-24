@@ -4,15 +4,17 @@
 #
 Name     : R-pdfCluster
 Version  : 1.0.3
-Release  : 21
+Release  : 22
 URL      : https://cran.r-project.org/src/contrib/pdfCluster_1.0-3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pdfCluster_1.0-3.tar.gz
 Summary  : Cluster Analysis via Nonparametric Density Estimation
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-pdfCluster-lib = %{version}-%{release}
+Requires: R-geometry
+Requires: R-sm
+Requires: R-spdep
 BuildRequires : R-geometry
-BuildRequires : R-magic
 BuildRequires : R-sm
 BuildRequires : R-spdep
 BuildRequires : buildreq-R
@@ -39,13 +41,13 @@ lib components for the R-pdfCluster package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552893766
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569366626
 
 %install
-export SOURCE_DATE_EPOCH=1552893766
+export SOURCE_DATE_EPOCH=1569366626
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -74,12 +76,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  pdfCluster || :
+R CMD check --no-manual --no-examples --no-codoc pdfCluster || :
 
 
 %files
