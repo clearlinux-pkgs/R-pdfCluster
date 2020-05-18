@@ -4,7 +4,7 @@
 #
 Name     : R-pdfCluster
 Version  : 1.0.3
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/pdfCluster_1.0-3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/pdfCluster_1.0-3.tar.gz
 Summary  : Cluster Analysis via Nonparametric Density Estimation
@@ -12,11 +12,7 @@ Group    : Development/Tools
 License  : GPL-2.0
 Requires: R-pdfCluster-lib = %{version}-%{release}
 Requires: R-geometry
-Requires: R-sm
-Requires: R-spdep
 BuildRequires : R-geometry
-BuildRequires : R-sm
-BuildRequires : R-spdep
 BuildRequires : buildreq-R
 
 %description
@@ -36,21 +32,22 @@ lib components for the R-pdfCluster package.
 
 %prep
 %setup -q -c -n pdfCluster
+cd %{_builddir}/pdfCluster
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569366626
+export SOURCE_DATE_EPOCH=1589786271
 
 %install
-export SOURCE_DATE_EPOCH=1569366626
+export SOURCE_DATE_EPOCH=1589786271
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
